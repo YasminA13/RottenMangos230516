@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 #import "Movie.h"
 
+
 @interface MasterViewController ()
 
 @property NSMutableArray *objects; //data source driving table view
@@ -25,8 +26,6 @@
     
     NSURL *movieURL = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=xe4xau69pxaah5tmuryvrw75"];
     NSURLRequest *apiRequest = [NSURLRequest requestWithURL:movieURL];
-    
-    NSLog(@"Movie URL: %@", apiRequest);
     
     NSURLSession *sharedSession = [NSURLSession sharedSession];
     //one instance
@@ -150,19 +149,6 @@
     cell.textLabel.text = movie.title;
     return cell;
 }
-//
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-//    // Return NO if you do not want the specified item to be editable.
-//    return YES;
-//}
-//
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [self.objects removeObjectAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-//    }
-//}
+
 
 @end

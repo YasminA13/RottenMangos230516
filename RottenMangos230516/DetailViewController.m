@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "ReviewTableViewController.h"
 #import "Review.h"
+#import "MapViewController.h"
 
 @interface DetailViewController ()
 
@@ -18,26 +19,10 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem {
-    
-//    
-//    if (_detailItem != newDetailItem) {
-//        _detailItem = newDetailItem;
-//            
-//        // Update the view.
-//        [self configureView];
-//    }
-}
-
-//- (void)configureView {
-//    // Update the user interface for the detail item.
-//    if (self.detailItem) {
-//        self.detailDescriptionLabel.text = [self.detailItem description];
-//    }
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
         if (self.movie) {
             
@@ -53,10 +38,8 @@
             
         }
     
-    
     //[self configureView];
 }
-
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -65,13 +48,14 @@
         ReviewTableViewController *rvtController = (ReviewTableViewController *)[segue destinationViewController];
         [rvtController setMovieReview:self.movie.movieReview];
     }
+    
+    if ([[segue identifier] isEqualToString:@"ShowMap"]) {
+        
+        MapViewController *mapController = (MapViewController *)[segue destinationViewController];
+        [mapController setMovie:self.movie];
+    }
 }
 
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end
